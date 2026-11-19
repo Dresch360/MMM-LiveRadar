@@ -194,41 +194,10 @@ Aircraft positions come from the adsb.fi community receiver network. Each aircra
 
 The default refresh pause is two seconds. Instances with matching feed settings share one poller within the same MagicMirror process.
 
-## Standalone preview and feed check
-
-From the module directory:
-
-```bash
-node preview-server.js
-```
-
-Open these URLs on that same computer:
-
-| Preview | URL |
-| --- | --- |
-| Compact | http://127.0.0.1:8099/ |
-| Portrait fullscreen | http://127.0.0.1:8099/?layout=portrait&fullscreen=1 |
-| Landscape, right panel | http://127.0.0.1:8099/?layout=landscape&fullscreen=1&side=right |
-| Landscape, left panel | http://127.0.0.1:8099/?layout=landscape&fullscreen=1&side=left |
-
-The preview uses the Woodland Hills defaults and listens only on localhost. Ctrl+C stops it. Avoid running a second poller alongside an active mirror on the same connection during testing.
-
-For one feed diagnostic request:
-
-```bash
-node check-feed.js
-```
-
-Optional arguments are latitude, longitude and radius in miles:
-
-```bash
-node check-feed.js 34.1683 -118.6059 25
-```
-
 ## License, data and attribution
 
 Module source: [MIT](LICENSE). Bundled Leaflet 1.9.4: [BSD-2-Clause](vendor/LEAFLET-LICENSE.txt).
 
 Aircraft data: [adsb.fi](https://adsb.fi/). Its public API is for personal, non-commercial use and requires visible attribution. Contact the provider for commercial permission. See its [API documentation and terms](https://github.com/adsbfi/opendata). The module's MIT license does not grant rights to third-party data or services.
 
-Map data and tiles: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright). Normal browser caching is retained and only the visible map is requested. Follow the [tile usage policy](https://operations.osmfoundation.org/policies/tiles/); service availability is not guaranteed.
+Map data and tiles: © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright). See the [tile usage policy](https://operations.osmfoundation.org/policies/tiles/).
