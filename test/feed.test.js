@@ -3,8 +3,8 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { config, normalize, distanceMiles, retryDelay, Feed, endpoint } = require("../lib/feed");
 const now = 1795077504001;
-const settings = config({});
-const heli = { hex: "a1f48f", category: "A7", t: "AS50", flight: "N225LA  ", lat: 34.251572, lon: -118.44366, seen_pos: 0.384, alt_baro: 1500, gs: 100, track: 350 };
+const settings = config({ latitude: 0, longitude: 0 });
+const heli = { hex: "abc123", category: "A7", t: "AS50", flight: "TEST123  ", lat: 0.1, lon: 0.12, seen_pos: 0.384, alt_baro: 1500, gs: 100, track: 350 };
 const plane = { ...heli, hex: "abcdef", category: "A3", t: "B738" };
 
 test("source milliseconds, aircraft age, helicopter classification and units", () => {
@@ -12,7 +12,7 @@ test("source milliseconds, aircraft age, helicopter classification and units", (
   assert.equal(p.aircraft.length, 2);
   assert.equal(p.aircraft[0].helicopter, true);
   assert.equal(p.aircraft[1].helicopter, false);
-  assert.equal(p.aircraft[0].callsign, "N225LA");
+  assert.equal(p.aircraft[0].callsign, "TEST123");
   assert.equal(p.aircraft[0].positionAt, now - 384);
   assert.equal(p.aircraft[0].altitude, 1500);
   assert.equal(p.aircraft[0].speed, 100);

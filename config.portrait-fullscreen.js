@@ -6,9 +6,9 @@
  module: "MMM-LiveRadar",
  position: "fullscreen_above",
  config: {
-    latitude: 34.1683,
-    longitude: -118.6059,
-    locationLabel: "WOODLAND HILLS",
+    latitude: 34.2098,
+    longitude: -118.4900,
+    locationLabel: "xxxx",
     rangeMiles: 25,
     updateInterval: 2000,
     layout: "portrait",

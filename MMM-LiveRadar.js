@@ -1,7 +1,7 @@
 /* global Module, L */
 Module.register("MMM-LiveRadar", {
   defaults: {
-    latitude: 34.1683, longitude: -118.6059, locationLabel: "WOODLAND HILLS",
+    latitude: 34.2098, longitude: -118.4900, locationLabel: "xxxx",
     rangeMiles: 25, updateInterval: 2000, maxPositionAge: 60, staleAfter: 15,
     width: 460, mapHeight: 380, maxFlights: 6, helicoptersOnly: false,
     showTrails: true, trailMinutes: 3, showLabels: true, maxLabels: 8,

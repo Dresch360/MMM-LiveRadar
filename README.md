@@ -4,20 +4,6 @@ Live aircraft and helicopter radar for [MagicMirror²](https://magicmirror.build
 
 No ADS-B receiver or antenna is required. The module uses the [adsb.fi](https://adsb.fi/) public internet feed. Leaflet is bundled locally, so installing the module does not require `npm install`.
 
-## Screenshots
-
-### Portrait fullscreen with hover details
-
-<a href="docs/images/portrait-hover.png"><img src="docs/images/portrait-hover.png" alt="Portrait fullscreen radar showing Cessna 208 hover details and the matching highlighted aircraft row" width="420"></a>
-
-*Direct screen capture: aircraft registration, model, live flight details and linked row highlighting. Click the image to view it at full resolution.*
-
-### Landscape fullscreen
-
-![Landscape fullscreen with helicopter hover details](docs/images/landscape-hover.png)
-
-*Direct screen capture: helicopter hover details and the matching highlighted aircraft in the information panel on the right.*
-
 ## Features
 
 - Airplane and helicopter icons that follow the reported ground track
@@ -64,9 +50,9 @@ Add one of the following entries inside the existing `modules: [ ... ]` array in
   module: "MMM-LiveRadar",
   position: "bottom_right",
   config: {
-    latitude: 34.1683,
-    longitude: -118.6059,
-    locationLabel: "WOODLAND HILLS",
+    latitude: 34.2098,
+    longitude: -118.4900,
+    locationLabel: "xxxx",
     rangeMiles: 25,
     width: 460,
     mapHeight: 380,
@@ -75,7 +61,7 @@ Add one of the following entries inside the existing `modules: [ ... ]` array in
 },
 ```
 
-The coordinates above are approximate town-center coordinates. Set your own map center and label.
+The example map center is Van Nuys Airport. Set your preferred coordinates and replace `xxxx` with your own label.
 
 ### Portrait fullscreen
 
@@ -85,9 +71,9 @@ The coordinates above are approximate town-center coordinates. Set your own map 
   module: "MMM-LiveRadar",
   position: "fullscreen_above",
   config: {
-    latitude: 34.1683,
-    longitude: -118.6059,
-    locationLabel: "WOODLAND HILLS",
+    latitude: 34.2098,
+    longitude: -118.4900,
+    locationLabel: "xxxx",
     layout: "portrait",
     fullscreen: true,
     rangeMiles: 25,
@@ -108,9 +94,9 @@ The map sits above the aircraft list. Larger list fonts are included for this la
   module: "MMM-LiveRadar",
   position: "fullscreen_above",
   config: {
-    latitude: 34.1683,
-    longitude: -118.6059,
-    locationLabel: "WOODLAND HILLS",
+    latitude: 34.2098,
+    longitude: -118.4900,
+    locationLabel: "xxxx",
     layout: "landscape",
     fullscreen: true,
     infoSide: "right",
@@ -164,8 +150,8 @@ Offset `1` starts one level closer after fitting the range. Set it to `0` for th
 
 | Setting | Default | Description |
 | --- | --- | --- |
-| `latitude`, `longitude` | `34.1683`, `-118.6059` | Map center and search location |
-| `locationLabel` | `WOODLAND HILLS` | Text above the map |
+| `latitude`, `longitude` | `34.2098`, `-118.4900` | Map center and search location |
+| `locationLabel` | `xxxx` | Text above the map |
 | `rangeMiles` | `25` | Search radius in statute miles, 1–250 |
 | `updateInterval` | `2000` | Pause in milliseconds after a request completes; minimum 1500 |
 | `layout` | `portrait` | `portrait` or `landscape` |
