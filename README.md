@@ -4,9 +4,19 @@ Live aircraft and helicopter radar for [MagicMirror²](https://magicmirror.build
 
 No ADS-B receiver or antenna is required. The module uses the [adsb.fi](https://adsb.fi/) public internet feed. Leaflet is bundled locally, so installing the module does not require `npm install`.
 
+## Screenshots
+
+### Portrait fullscreen with hover details
+
+<a href="docs/images/portrait-hover.png"><img src="docs/images/portrait-hover.png" alt="Portrait fullscreen radar showing Cessna 208 hover details and the matching highlighted aircraft row" width="420"></a>
+
+*Direct screen capture: aircraft registration, model, live flight details and linked row highlighting. Click the image to view it at full resolution.*
+
+### Landscape fullscreen
+
 ![Live landscape layout on a smart mirror](docs/images/landscape-live.jpg)
 
-*Landscape layout during the initial live test. Version 0.3 adds larger hover cards and linked aircraft highlighting.*
+*Landscape photo from the initial live test. Version 0.3 adds the hover cards and linked highlighting shown in the portrait screenshot above.*
 
 ## Features
 
