@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.log
+config.js
+config(*).js
+*.bak
+*.zip
+.DS_Store
+Thumbs.db

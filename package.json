@@ -1,0 +1,9 @@
+{
+  "name": "mmm-liveradar",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Live aircraft and helicopter radar for MagicMirror using adsb.fi",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": { "test": "node --test test/*.test.js", "check-feed": "node check-feed.js" }
+}
