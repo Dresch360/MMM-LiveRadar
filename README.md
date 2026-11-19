@@ -14,9 +14,9 @@ No ADS-B receiver or antenna is required. The module uses the [adsb.fi](https://
 
 ### Landscape fullscreen
 
-![Live landscape layout on a smart mirror](docs/images/landscape-live.jpg)
+![Landscape fullscreen with helicopter hover details](docs/images/landscape-hover.png)
 
-*Landscape photo from the initial live test. Version 0.3 adds the hover cards and linked highlighting shown in the portrait screenshot above.*
+*Direct screen capture: helicopter hover details and the matching highlighted aircraft in the information panel on the right.*
 
 ## Features
 
@@ -31,15 +31,13 @@ No ADS-B receiver or antenna is required. The module uses the [adsb.fi](https://
 - Configurable starting zoom and local search radius
 - Position ages, faded older reports and automatic removal of expired positions
 
-Cards show registration, callsign, model/type, altitude, groundspeed, track, distance and position age. Vertical rate, squawk, a listed owner/operator and build year appear when available. Missing details are omitted. Owner/operator information is database metadata, not independently verified ownership.
+Cards show registration, callsign, model/type, altitude, groundspeed, track, distance and position age. Vertical rate, squawk, a listed owner/operator and build year appear when available. Missing details are omitted.
 
 ## Requirements
 
 - A working MagicMirror² installation with a modern Electron/Chromium browser
 - Node.js 20 or newer is recommended for new installations
 - Internet access to `opendata.adsb.fi` and, if enabled, `tile.openstreetmap.org`
-
-Aircraft coverage and data freshness depend on the receiver network and service availability. This is an informational display, not a navigation or operational aviation tool.
 
 ## Install
 
@@ -190,17 +188,11 @@ Offset `1` starts one level closer after fitting the range. Set it to `0` for th
 
 Groundspeed is shown in knots, altitude in feet and distance in statute miles. "Track" is the reported direction over the ground, which can differ from nose heading.
 
-## Data freshness and limits
+## Live data
 
-The default two-second polling pause is not a guarantee of two-second-old aircraft positions. Each row shows its report age. The footer separates source-snapshot age from time since the latest successful fetch.
+Aircraft positions come from the adsb.fi community receiver network. Each aircraft shows its position age; older reports fade and expire automatically. Coverage and update latency depend on the available feed.
 
-LIVE FEED means the latest request succeeded and the source snapshot is recent. FEED DELAYED means the snapshot is older or a request failed. Existing positions continue aging and are removed at the configured limit. Icons and trails use reported positions; movement is not invented between reports.
-
-Identical module instances in the same MagicMirror process share one poller. Their location, radius, interval, ground inclusion and maximum position age must match. Display settings and filters may differ. Separate processes and devices on the same public IP still share the provider's rate limit.
-
-The helper waits at least 60 seconds after HTTP 429, respects longer Retry-After values and backs off after temporary errors. Access errors such as 401 or 403 stop polling until investigated and restarted.
-
-Helicopters are identified primarily by ADS-B category A7, with a small aircraft-type fallback when the category is absent. Some helicopters may remain generic aircraft and will not appear in the helicopter-only filter. Low-altitude coverage can be incomplete. An empty map does not establish that the sky is empty.
+The default refresh pause is two seconds. Instances with matching feed settings share one poller within the same MagicMirror process.
 
 ## Standalone preview and feed check
 
@@ -232,28 +224,6 @@ Optional arguments are latitude, longitude and radius in miles:
 ```bash
 node check-feed.js 34.1683 -118.6059 25
 ```
-
-## Troubleshooting
-
-**Blank screen or missing module:** confirm that the main file is directly at `modules/MMM-LiveRadar/MMM-LiveRadar.js`. Avoid accidentally nesting a second `MMM-LiveRadar` folder. Check MagicMirror logs and configuration syntax.
-
-**Map background fails:** set `useMapTiles: false` to retain the radar rings and aircraft without background tiles. Current code uses OpenStreetMap Standard tiles styled dark in the browser and does not use CARTO's key-protected tiles.
-
-**Unexpected blank margins:** check existing global CSS scaling, zoom and width rules. Fullscreen already requests the viewport size; machine-specific width extensions are not enabled by default.
-
-**No aircraft:** distinguish a feed error from an empty recent result. Verify the location, filter and source ages. The feed is best-effort.
-
-## Development and validation
-
-The included data/helper tests run with built-in Node.js tooling:
-
-```bash
-npm test
-```
-
-No dependency installation is required for these tests. Development checks also exercised hover content, linked highlighting, stable marker elements during refresh, fixed/automatic zoom and both fullscreen arrangements using the bundled Leaflet library in a DOM test environment.
-
-The module has been used on a Raspberry Pi 5 smart mirror. This is an early release, not a claim of compatibility with every MagicMirror module, theme or browser version. Include your MagicMirror, Node and Electron versions when reporting an issue. Remove credentials, private calendar URLs and personal configuration data from logs before sharing them.
 
 ## License, data and attribution
 
